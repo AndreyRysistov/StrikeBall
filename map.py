@@ -2,12 +2,12 @@ from settings import *
 
 text_map = [
     '111111111111',
-    '2..........1',
-    '2..........1',
-    '2..........1',
-    '2..........1',
-    '2..........1',
-    '2..........1',
+    'P..........1',
+    'P..........1',
+    'P..........1',
+    'P..........1',
+    'P..........1',
+    'P..........1',
     '111111111111'
 ]
 
@@ -19,5 +19,5 @@ for j, row in enumerate(text_map):
             mini_map.add((i * MAP_TILE, j * MAP_TILE))
             if char == '1':
                 world_map[(i * TILE, j * TILE)] = '1'
-            elif char == '2':
-                world_map[(i * TILE, j * TILE)] = '2'
+            elif char == 'P':
+                world_map[(i * TILE, j * TILE)] = 'P'

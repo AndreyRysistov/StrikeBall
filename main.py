@@ -7,7 +7,7 @@ from state_of_game import *
 from settings import *
 
 from ray_casting import ray_casting
-from rules import check_rules
+from rules import *
 
 pygame.init()
 pygame.display.set_caption("Robot and balls")
@@ -34,8 +34,6 @@ while True:
                 for event in pygame.event.get():
                         if event.type == pygame.QUIT:
                                 exit()
-                if sec % 100 == 0:
-                        balls.append(Ball(img_ball))
                 clock.tick(60)
                 time_game = (pygame.time.get_ticks() - start_time) // 1000
                 player.movement()
@@ -49,7 +47,8 @@ while True:
                 drawing.timer(time_game)
                 drawing.mini_map(player, balls)
                 pygame.display.flip()
-                check_rules(balls, player, state_of_game, time_game)
+                check_rules(balls, player, state_of_game)
+                check_create_ball(img_ball, balls,time_game, sec )
                 sec += 1
         elif state_of_game.name == 'close':
                 keys = pygame.key.get_pressed()

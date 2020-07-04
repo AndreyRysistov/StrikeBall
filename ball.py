@@ -6,7 +6,7 @@ import random
 class Ball:
     def __init__(self, img):
         self.object = img
-        self.pos = self.x, self.y = (random.uniform(7.0, 8.5) * TILE , random.uniform(2.0, 6.5) * TILE)
+        self.pos = self.x, self.y = (random.uniform(7.8, 10.8) * TILE , random.uniform(2.0, 6.5) * TILE)
         self.static = ball_img_static
         self.shift = ball_shift
         self.scale = ball_scale

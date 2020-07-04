@@ -9,9 +9,9 @@ class Drawing:
         self.font_fps = pygame.font.SysFont('Arial', 28, bold=True)
         self.font_text = pygame.font.SysFont('Arial', 52, bold=True)
         self.font_time = pygame.font.SysFont('Arial', 32, bold=True)
-        self.textures = {'1': pygame.image.load('img/wall1.png').convert(),
-                         '2': pygame.image.load('img/wall2.png').convert(),
-                         'S': pygame.image.load('img/sky3.png').convert()
+        self.textures = {'1': pygame.image.load('img/wall4.png').convert(),
+                         'P': pygame.image.load('img/portal5.png').convert_alpha(),
+                         'S': pygame.image.load('img/sky3.png').convert(),
                          }
     def fill(self, color):
         self.sc.fill(color)
