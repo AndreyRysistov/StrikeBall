@@ -6,8 +6,7 @@ import random
 class Ball:
     def __init__(self, img):
         self.object = img
-        self.pos = self.x, self.y = (random.uniform(7.8, 10.8) * TILE , random.uniform(2.0, 6.5) * TILE)
-        self.static = ball_img_static
+        self.pos = self.x, self.y = (random.uniform(7.8, 10.5) * TILE , random.uniform(2.0, 6.5) * TILE)
         self.shift = ball_shift
         self.scale = ball_scale
         self.dx, self.dy = ball_speed
@@ -36,16 +35,6 @@ class Ball:
             proj_height = min(int(PROJ_COEFF / distance_to_ball * self.scale), 2 * HEIGHT)
             half_proj_height = proj_height // 2
             shift = half_proj_height * self.shift
-
-            if not self.static:
-                if theta < 0:
-                    theta += DOUBLE_PI
-                theta = 360 - int(math.degrees(theta))
-
-                for angles in self.sprite_angles:
-                    if theta in angles:
-                        self.object = self.sprite_positions[angles]
-                        break
 
             ball_pos = (current_ray * SCALE - half_proj_height, HALF_HEIGHT - half_proj_height + shift)
             ball = pygame.transform.scale(self.object, (proj_height, proj_height))

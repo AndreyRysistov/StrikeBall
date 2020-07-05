@@ -34,7 +34,7 @@ TEXTURE_HEIGHT = 1200
 TEXTURE_SCALE = TEXTURE_WIDTH // TILE
 
 # player settings
-player_pos = (HALF_WIDTH // 5, HALF_HEIGHT - 50)
+player_pos = (130, HALF_HEIGHT)
 player_angle = 0
 player_speed = 4
 player_angle_speed = 0.03
@@ -43,12 +43,13 @@ player_map_radius = player_radius//MAP_SCALE
 #ball settings
 ball_img = 'sprites/ball/0.png'
 count_of_ball = 3
-ball_img_static = True
 ball_shift = 1.8
 ball_scale = 0.4
 ball_speed = (0.04, 0.04)
 ball_radius = 30
 ball_map_radius = ball_radius//MAP_SCALE
+#wall settings
+wall_size = 130
 
 # colors
 WHITE = (255, 255, 255)
