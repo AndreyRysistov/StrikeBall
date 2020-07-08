@@ -2,7 +2,19 @@ from settings import *
 import pygame
 import math
 
+
 class Player:
+    """
+    Class that implements the player's(robot's) mechanics)
+    The class has the following attributes:
+        x, y-coordinates of the player on the plane
+        angle-the angle of the player's view direction
+        r-the player's radius
+    The class has the following methods
+        pos-returns a tuple consisting of the player's coordinates
+        movement-changes the player's coordinates according to the keys pressed on the keyboard
+    """
+
     def __init__(self):
         self.x, self.y = player_pos
         self.angle = player_angle

@@ -1,4 +1,7 @@
 from settings import *
+"""
+Module for creating a map layout of the map and a mini-map of the game
+"""
 
 text_map = [
     '111111111111',

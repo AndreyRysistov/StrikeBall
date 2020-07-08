@@ -1,17 +1,15 @@
 import pygame
-from player import Player
-from ball import Ball
+import os
 from drawing import Drawing
 from logger import Logger
-from state_of_game import *
-from settings import *
-
+from player import Player
 from ray_casting import ray_casting
 from rules import *
 
 pygame.init()
+#os.environ['SDL_VIDEO_CENTERED'] = '0'#for centering of game window
 pygame.display.set_caption("Robot and balls")
-sc = pygame.display.set_mode((WIDTH, HEIGHT))
+sc = pygame.display.set_mode((WIDTH, HEIGHT), flags=pygame.FULLSCREEN)
 sc_map = pygame.Surface((WIDTH // MAP_SCALE, HEIGHT // MAP_SCALE))
 clock = pygame.time.Clock()
 img_ball = pygame.image.load(ball_img).convert_alpha()
@@ -35,8 +33,9 @@ while True:
                 if keys[pygame.K_BREAK]:
                         state_of_game.switch(Close)
                 for event in pygame.event.get():
-                        if event.type == pygame.QUIT:
+                        if (event.type == pygame.QUIT) or (event.type == pygame.KEYUP and event.key == pygame.K_ESCAPE):
                                 logger.log_to_excel()
+                                drawing.graphics(logger.df)
                                 exit()
                 clock.tick(60)
                 time_game = (pygame.time.get_ticks() - start_time) // 1000
@@ -65,9 +64,9 @@ while True:
                         player = Player()
                         state_of_game.switch(Running)
                 for event in pygame.event.get():
-                        if event.type == pygame.QUIT:
+                        if (event.type == pygame.QUIT) or (event.type == pygame.KEYUP and event.key == pygame.K_ESCAPE):
+                                drawing.graphics(logger.df)
                                 logger.log_to_excel()
-                                drawing.grafic(logger.df['time'], logger.df['player_x'])
                                 exit()
                 drawing.fill(BLACK)
                 drawing.print_text('Game over', (HALF_WIDTH - 100, HALF_HEIGHT - 100), WHITE, 54)
@@ -83,7 +82,8 @@ while True:
                 if keys[pygame.K_BREAK]:
                         state_of_game.switch(Close)
                 for event in pygame.event.get():
-                        if event.type == pygame.QUIT:
+                        if (event.type == pygame.QUIT) or (event.type == pygame.KEYUP and event.key == pygame.K_ESCAPE):
                                 logger.log_to_excel()
+                                drawing.graphics(logger.df)
                                 exit()
 

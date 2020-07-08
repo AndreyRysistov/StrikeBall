@@ -1,13 +1,16 @@
 import pygame
 from settings import *
 from map import world_map
-
-
-def mapping(a, b):
-    return (a // TILE) * TILE, (b // TILE) * TILE
-
+from math_function import mapping
 
 def ray_casting(player, textures):
+    """
+    A function that implements the rendering method in computer graphics Ray casting
+    in which the scene is built based on measurements of the intersection of rays with the visualized surface
+    :param player: object of the player class
+    :param textures: the texture of the original map
+    :return: parameters of objects that are textures on the map(walls)
+    """
     walls = []
     ox, oy = player.pos
     xm, ym = mapping(ox, oy)

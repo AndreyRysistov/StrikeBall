@@ -3,17 +3,35 @@ from settings import *
 import math
 import random
 
+
 class Ball:
+    """
+    Class that implements the mechanics of game balls.
+    The class has the following attributes:
+        ball_number-a class attribute that is available to all objects in the class. it is used to create a unique ball identifier
+        id - unique identifier of the balloon
+        object-ball image
+        pos tuple consisting of the coordinates of the ball is a pair of random numbers that lie in the map scale range at the time of creating the ball
+        shift - offset of the ball when it is displayed on the screen
+        scale-the scaling factor
+        dx, dy-projections of the ball velocity vector on the direction of the x and Y axes
+        angle-the angle at which the balloon flies is set by a random value
+        r - radius of the ball
+    The class has the following methods:
+        locate-determine the position of the ball and its projections on the map
+        movement-changing the coordinates of the ball in accordance with the laws of kinematics
+    """
     ball_number = 0
+
     def __init__(self, img):
         Ball.ball_number += 1
         self.id = Ball.ball_number
         self.object = img
-        self.pos = self.x, self.y = (random.uniform(7.8, 10.5) * TILE , random.uniform(2.0, 6.5) * TILE)
+        self.pos = self.x, self.y = (random.uniform(7.8, 10.5) * TILE, random.uniform(2.0, 6.5) * TILE)
         self.shift = ball_shift
         self.scale = ball_scale
         self.dx, self.dy = ball_speed
-        self.angle = random.uniform(math.pi/2 + math.pi/8, 3 * math.pi/2 - math.pi/8)
+        self.angle = random.uniform(math.pi / 2 + math.pi / 8, 3 * math.pi / 2 - math.pi / 8)
         self.r = ball_radius
 
     def locate(self, player, walls):
@@ -44,8 +62,8 @@ class Ball:
             return (distance_to_ball, ball, ball_pos)
         else:
             return (False,)
+
     def movement(self):
         self.x = self.x + self.dx * math.cos(self.angle) * TILE
         self.y = self.y + self.dy * math.sin(self.angle) * TILE
         self.pos = (self.x, self.y)
-

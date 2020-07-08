@@ -1,4 +1,5 @@
 import math
+"""File with parameters of game"""
 # game settings
 WIDTH = 1200
 HEIGHT = 800
