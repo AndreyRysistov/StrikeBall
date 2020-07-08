@@ -4,13 +4,16 @@ import math
 import random
 
 class Ball:
+    ball_number = 0
     def __init__(self, img):
+        Ball.ball_number += 1
+        self.id = Ball.ball_number
         self.object = img
         self.pos = self.x, self.y = (random.uniform(7.8, 10.5) * TILE , random.uniform(2.0, 6.5) * TILE)
         self.shift = ball_shift
         self.scale = ball_scale
         self.dx, self.dy = ball_speed
-        self.angle = random.uniform(math.pi/2 + math.pi/8, 3* math.pi/2 - math.pi/8)
+        self.angle = random.uniform(math.pi/2 + math.pi/8, 3 * math.pi/2 - math.pi/8)
         self.r = ball_radius
 
     def locate(self, player, walls):

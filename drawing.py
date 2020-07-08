@@ -1,14 +1,12 @@
 import pygame
 from settings import *
 from map import mini_map
+import matplotlib.pyplot as plt
 
 class Drawing:
     def __init__(self, sc, sc_map):
         self.sc = sc
         self.sc_map = sc_map
-        self.font_fps = pygame.font.SysFont('Arial', 28, bold=True)
-        self.font_text = pygame.font.SysFont('Arial', 52, bold=True)
-        self.font_time = pygame.font.SysFont('Arial', 32, bold=True)
         self.textures = {'1': pygame.image.load('img/wall4.png').convert(),
                          'P': pygame.image.load('img/portal5.png').convert_alpha(),
                          'S': pygame.image.load('img/sky3.png').convert(),
@@ -29,8 +27,9 @@ class Drawing:
                 self.sc.blit(object, object_pos)
 
     def fps(self, clock):
+        font_fps = pygame.font.SysFont('Arial', 28, bold=True)
         display_fps = str(int(clock.get_fps()))
-        render = self.font_fps.render(display_fps, 0, DARKORANGE)
+        render = font_fps.render(display_fps, 0, DARKORANGE)
         self.sc.blit(render, FPS_POS)
 
     def mini_map(self, player, balls):
@@ -45,9 +44,10 @@ class Drawing:
         for x, y in mini_map:
             pygame.draw.rect(self.sc_map, DARKBROWN, (x, y, MAP_TILE, MAP_TILE))
         self.sc.blit(self.sc_map, MAP_POS)
-    def print_text(self, text, text_pos, color):
-        render = self.font_text.render(text, 0, color)
+    def print_text(self, text, text_pos, color, size):
+        font_text = pygame.font.SysFont('Arial', size, bold=True)
+        render = font_text.render(text, 0, color)
         self.sc.blit(render, text_pos)
-    def timer(self, time):
-        render = self.font_time.render('time: {}'.format(time), 0, BLACK)
-        self.sc.blit(render, TIME_POS)
+    def grafic(self, x, y):
+        plt.plot(x, y)
+        plt.show()

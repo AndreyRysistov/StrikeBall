@@ -42,6 +42,7 @@ player_radius = 30
 player_map_radius = player_radius//MAP_SCALE
 #ball settings
 ball_img = 'sprites/ball/0.png'
+ball_id = 1
 count_of_ball = 3
 ball_shift = 1.8
 ball_scale = 0.4
@@ -50,7 +51,11 @@ ball_radius = 30
 ball_map_radius = ball_radius//MAP_SCALE
 #wall settings
 wall_size = 130
-
+#logger settings
+ip_adress = '127.0.0.1'
+port = 8086
+name_data_base = 'work log'
+path_log = 'logger_data/log_file.xlsx'
 # colors
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)

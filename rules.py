@@ -19,12 +19,12 @@ def check_create_ball(img_ball, balls, time_game, sec):
             count_of_new_ball = 3
             for i in range(0, count_of_new_ball):
                 balls.append(Ball(img_ball))
-    if time_game > 15:
+    if time_game > 20:
         if sec % 200 == 0:
             count_of_new_ball = 2
             for i in range(0, count_of_new_ball):
                 balls.append(Ball(img_ball))
-    elif time_game > 3:
+    elif time_game > 0:
         if sec % 100 == 0:
             count_of_new_ball = 1
             for i in range(0, count_of_new_ball):
